@@ -16,3 +16,8 @@ app.get("/restaurants", async (request, response) => {
     const result = await Restaurant.findAll();
     response.json(result);
 });
+
+app.get("/restaurants/:id", async (req, res) => {
+    const result = await Restaurant.findByPk(req.params.id);
+    res.json(result);
+});
