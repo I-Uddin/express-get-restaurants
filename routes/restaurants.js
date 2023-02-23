@@ -34,7 +34,7 @@ router.post(
 
 router.put("/:id", async (req, res) => {
   const result = await Restaurant.findByPk(req.params.id);
-  result.set({
+  await result.update({
     name: req.body.name,
     location: req.body.location,
     cuisine: req.body.cuisine,
@@ -43,8 +43,8 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const Result = await Restaurant.findByPk(req.params.id);
-  await Result.destroy();
+  const result = await Restaurant.findByPk(req.params.id);
+  await result.destroy();
   res.json("Delete Success!");
 });
 
